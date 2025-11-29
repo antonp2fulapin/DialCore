@@ -9,10 +9,34 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "DialCore | Next-Generation VoIP",
-  description:
-    "DialCore delivers modern VoIP and SIP solutions for global teams, call centers, and AI-powered support.",
   metadataBase: new URL("https://dialcore.com"),
+  title: {
+    default: "DialCore | Next-Generation VoIP",
+    template: "%s | DialCore",
+  },
+  description:
+    "DialCore delivers modern VoIP, SIP trunks, and AI-powered call automation for global teams and call centers.",
+  applicationName: "DialCore",
+  keywords: [
+    "VoIP platform",
+    "SIP trunking",
+    "WebRTC",
+    "call center software",
+    "AI voice automation",
+    "global phone numbers",
+  ],
+  alternates: {
+    canonical: "/",
+    languages: { "en-US": "/" },
+  },
+  authors: [{ name: "DialCore" }],
+  creator: "DialCore",
+  publisher: "DialCore",
+  formatDetection: { telephone: true, address: true, email: true },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "DialCore | Next-Generation VoIP",
     description:
@@ -40,6 +64,7 @@ export const metadata: Metadata = {
       "https://images.unsplash.com/photo-1527443224154-d5e7c6f09417?auto=format&fit=crop&w=1600&q=80",
     ],
   },
+  category: "technology",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, PhoneCall, ShieldCheck, Sparkles, Waves } from "lucide-react";
+import Script from "next/script";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -45,9 +46,89 @@ const numberInventory = [
   { country: "Brazil", code: "+55", price: "$1.60", availability: "São Paulo, Rio de Janeiro", type: "Local" },
 ];
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "DialCore",
+  url: "https://dialcore.com",
+  logo: "https://dialcore.com/logo.svg",
+  sameAs: [
+    "https://www.linkedin.com/company/dialcore",
+    "https://twitter.com/dialcore",
+    "https://github.com/dialcore",
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+1-415-555-0137",
+      contactType: "sales",
+      email: "contact@dialcore.com",
+      areaServed: "Worldwide",
+    },
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "DialCore",
+  url: "https://dialcore.com",
+  inLanguage: "en",
+  potentialAction: [
+    {
+      "@type": "RegisterAction",
+      name: "Request access to DialCore",
+      target: "https://dialcore.com#request-access",
+    },
+  ],
+};
+
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "DialCore VoIP Platform",
+  description:
+    "Hosted VoIP, SIP trunks, AI assistants, analytics, and WebRTC calling with global phone number provisioning.",
+  brand: {
+    "@type": "Brand",
+    name: "DialCore",
+  },
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: "1.15",
+    highPrice: "1.95",
+    offerCount: "6",
+    availability: "https://schema.org/PreOrder",
+    url: "https://dialcore.com#marketplace",
+  },
+  audience: {
+    "@type": "Audience",
+    audienceType: "business",
+  },
+};
+
 export default function HomePage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0b0618] via-[#0e0a24] to-[#0b0618]">
+      <Script
+        id="dialcore-organization-ld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <Script
+        id="dialcore-website-ld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <Script
+        id="dialcore-product-ld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <div className="pointer-events-none absolute inset-0 opacity-70">
         <motion.div
           className="gradient-bg absolute inset-0"
@@ -255,7 +336,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="container space-y-4 py-12">
+        <section id="marketplace" className="container space-y-4 py-12">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
               <p className="text-sm uppercase tracking-[0.25em] text-primary">Preview</p>
@@ -321,7 +402,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#120d24]/80 via-[#0e0a1e]/90 to-[#0b0818]/85 p-8 shadow-glow">
+        <section
+          id="request-access"
+          className="container relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#120d24]/80 via-[#0e0a1e]/90 to-[#0b0818]/85 p-8 shadow-glow"
+        >
           <div className="absolute inset-0 opacity-30">
             <motion.div
               className="gradient-bg absolute inset-0"
