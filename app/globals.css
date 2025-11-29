@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --background: 222 47% 5%;
+  --background: 248 39% 7%;
   --foreground: 210 20% 98%;
-  --muted: 217 19% 15%;
-  --muted-foreground: 215 12% 65%;
-  --border: 217 19% 18%;
-  --input: 217 19% 18%;
-  --primary: 201 100% 50%;
+  --muted: 245 23% 14%;
+  --muted-foreground: 230 14% 70%;
+  --border: 247 22% 18%;
+  --input: 247 22% 18%;
+  --primary: 264 83% 65%;
   --primary-foreground: 210 20% 98%;
-  --secondary: 248 54% 30%;
+  --secondary: 260 40% 24%;
   --secondary-foreground: 210 20% 98%;
-  --accent: 162 84% 39%;
-  --accent-foreground: 210 20% 98%;
+  --accent: 141 57% 62%;
+  --accent-foreground: 248 39% 10%;
   --destructive: 0 62% 48%;
   --destructive-foreground: 210 20% 98%;
-  --card: 225 28% 8%;
+  --card: 247 25% 10%;
   --card-foreground: 210 20% 98%;
-  --ring: 201 100% 50%;
+  --ring: 264 83% 65%;
   --radius: 0.9rem;
 }
 
@@ -29,10 +29,11 @@
 
 body {
   @apply bg-background text-foreground antialiased;
+  font-family: var(--font-sans), "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
 }
 
 .gradient-bg {
-  background: linear-gradient(120deg, rgba(34, 176, 255, 0.35), rgba(116, 56, 255, 0.35), rgba(66, 255, 215, 0.35));
+  background: linear-gradient(120deg, rgba(130, 74, 255, 0.35), rgba(86, 34, 175, 0.35), rgba(155, 243, 195, 0.28));
   background-size: 200% 200%;
 }
 
@@ -52,6 +53,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(34, 176, 255, 0.7), rgba(116, 56, 255, 0.7));
+  background: linear-gradient(180deg, rgba(130, 74, 255, 0.7), rgba(155, 243, 195, 0.7));
   border-radius: 9999px;
 }

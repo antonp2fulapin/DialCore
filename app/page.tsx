@@ -36,9 +36,18 @@ const valueProps = [
   },
 ];
 
+const numberInventory = [
+  { country: "United States", code: "+1", price: "$1.25", availability: "120+ regions", type: "Local & Toll-Free" },
+  { country: "United Kingdom", code: "+44", price: "$1.65", availability: "London, Manchester, Birmingham", type: "Local" },
+  { country: "Canada", code: "+1", price: "$1.15", availability: "All provinces", type: "Local & Toll-Free" },
+  { country: "Australia", code: "+61", price: "$1.85", availability: "Sydney, Melbourne, Perth", type: "Local" },
+  { country: "Germany", code: "+49", price: "$1.90", availability: "Berlin, Frankfurt, Munich", type: "Local" },
+  { country: "Brazil", code: "+55", price: "$1.60", availability: "São Paulo, Rio de Janeiro", type: "Local" },
+];
+
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0b0618] via-[#0e0a24] to-[#0b0618]">
       <div className="pointer-events-none absolute inset-0 opacity-70">
         <motion.div
           className="gradient-bg absolute inset-0"
@@ -46,12 +55,12 @@ export default function HomePage() {
           transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
         />
         <motion.div
-          className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-sky-500/20 blur-3xl"
+          className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/25 blur-3xl"
           animate={{ y: [0, -20, 10], scale: [1, 1.08, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -right-16 top-20 h-80 w-80 rounded-full bg-indigo-600/20 blur-3xl"
+          className="absolute -right-16 top-20 h-80 w-80 rounded-full bg-accent/25 blur-3xl"
           animate={{ y: [0, 15, -10], scale: [1.05, 0.98, 1.02] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -61,7 +70,7 @@ export default function HomePage() {
         <div className="container flex items-center justify-between py-5">
           <div className="flex items-center space-x-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 shadow-glow">
-              <Waves className="h-6 w-6 text-sky-400" />
+              <Waves className="h-6 w-6 text-primary" />
             </div>
             <div>
               <p className="text-lg font-semibold tracking-tight text-white">DialCore</p>
@@ -69,16 +78,21 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hidden items-center space-x-3 sm:flex">
-            <Button variant="ghost" className="text-sm">Platform</Button>
-            <Button variant="ghost" className="text-sm">Solutions</Button>
-            <Button variant="ghost" className="text-sm">Docs</Button>
+            {["Platform", "Solutions", "Docs"].map((item) => (
+              <div key={item} className="flex items-center gap-2 rounded-full border border-white/5 bg-white/5 px-3 py-1.5">
+                <Button variant="ghost" className="px-0 text-sm text-white hover:text-primary">
+                  {item}
+                </Button>
+                <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[11px] font-semibold text-primary">Soon</span>
+              </div>
+            ))}
             <AccessDialog>
-              <Button className="shadow-glow">Request Access</Button>
+              <Button className="shadow-glow bg-accent text-slate-900 hover:bg-accent/90">Request Access</Button>
             </AccessDialog>
           </div>
           <div className="sm:hidden">
             <AccessDialog>
-              <Button size="sm" className="shadow-glow">Request</Button>
+              <Button size="sm" className="shadow-glow bg-accent text-slate-900 hover:bg-accent/90">Request</Button>
             </AccessDialog>
           </div>
         </div>
@@ -93,8 +107,8 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className="space-y-4"
             >
-              <div className="inline-flex items-center space-x-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-sky-200">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden />
+              <div className="inline-flex items-center space-x-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-primary">
+                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" aria-hidden />
                 <span>Power Your Voice — With DialCore</span>
               </div>
               <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -112,7 +126,7 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <AccessDialog>
-                <Button size="lg" className="w-full sm:w-auto shadow-glow">
+                <Button size="lg" className="w-full sm:w-auto shadow-glow bg-accent text-slate-900 hover:bg-accent/90">
                   Request Access
                 </Button>
               </AccessDialog>
@@ -129,7 +143,7 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                   className="blur-panel flex h-full flex-col space-y-3 rounded-2xl p-4"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-sky-300">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
                     <item.icon className="h-5 w-5" />
                   </div>
                   <h3 className="text-base font-semibold text-white">{item.title}</h3>
@@ -146,18 +160,18 @@ export default function HomePage() {
             transition={{ duration: 0.9 }}
           >
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-1 shadow-2xl backdrop-blur">
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-indigo-500/5 to-emerald-400/5" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/5 to-accent/10" />
               <div className="relative space-y-6 rounded-3xl border border-white/10 bg-slate-950/80 p-6 shadow-inner">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <div className="h-10 w-10 rounded-xl bg-sky-500/20" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/20" />
                     <div>
                       <p className="text-sm text-muted-foreground">Quality Score</p>
                       <p className="text-lg font-semibold text-white">99.995% Uptime</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2 rounded-full bg-white/5 px-3 py-1 text-xs text-muted-foreground">
-                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                    <span className="h-2 w-2 rounded-full bg-accent" />
                     Live Network
                   </div>
                 </div>
@@ -175,14 +189,14 @@ export default function HomePage() {
                     <span>~82ms avg</span>
                   </div>
                   <div className="h-3 rounded-full bg-white/5">
-                    <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-500" />
+                    <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-primary via-accent to-primary" />
                   </div>
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>AI routing decisions</span>
                     <span>On</span>
                   </div>
                   <div className="h-3 rounded-full bg-white/5">
-                    <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400" />
+                    <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-primary via-accent to-primary" />
                   </div>
                 </div>
                 <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -203,12 +217,12 @@ export default function HomePage() {
         <section className="container space-y-6 py-12">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-sky-200">Coming Soon</p>
+              <p className="text-sm uppercase tracking-[0.25em] text-primary">Coming Soon</p>
               <h2 className="mt-2 text-3xl font-semibold text-white">What we are shipping next</h2>
               <p className="text-muted-foreground">Early adopters get first access to premium VoIP and AI automation features.</p>
             </div>
             <AccessDialog>
-              <Button variant="outline" className="hidden border-white/20 text-sky-100 hover:text-white md:inline-flex">
+              <Button variant="outline" className="hidden border-white/20 text-white hover:border-primary hover:text-primary md:inline-flex">
                 Join the waitlist
               </Button>
             </AccessDialog>
@@ -216,13 +230,14 @@ export default function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <Card key={feature} className="relative overflow-hidden">
-                <div className="absolute right-3 top-3 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-sky-100">
+              <Card key={feature} className="relative overflow-hidden pt-14">
+                <div className="absolute left-5 top-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
                   Coming Soon
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-white">{feature}</CardTitle>
-                  <CardDescription>
+                <CardHeader className="pt-0 space-y-3">
+                  <CardTitle className="text-white leading-7">{feature}</CardTitle>
+                  <CardDescription className="leading-relaxed">
                     DialCore is wrapping quality monitoring, AI, and compliant provisioning around every step of your voice stack.
                   </CardDescription>
                 </CardHeader>
@@ -240,7 +255,73 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-slate-900/80 via-slate-900 to-slate-900/80 p-8 shadow-glow">
+        <section className="container space-y-4 py-12">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-2">
+              <p className="text-sm uppercase tracking-[0.25em] text-primary">Preview</p>
+              <h3 className="text-3xl font-semibold text-white">Purchase numbers in seconds</h3>
+              <p className="text-muted-foreground">See how DialCore surfaces inventory, pricing, and compliance checks before you provision.</p>
+            </div>
+            <AccessDialog>
+              <Button className="w-full md:w-auto bg-accent text-slate-900 shadow-glow hover:bg-accent/90">Request provisioning access</Button>
+            </AccessDialog>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.15fr,0.85fr]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground">Marketplace snapshot</p>
+                  <p className="text-xl font-semibold text-white">Global number inventory</p>
+                </div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  Live preview
+                </div>
+              </div>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                {numberInventory.map((item) => (
+                  <div
+                    key={item.country}
+                    className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-primary/50 hover:shadow-glow"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="space-y-1">
+                        <p className="text-sm text-muted-foreground">{item.country}</p>
+                        <p className="text-lg font-semibold text-white">{item.code} • {item.type}</p>
+                      </div>
+                      <span className="rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold text-accent">{item.price}/mo</span>
+                    </div>
+                    <p className="text-sm text-slate-200">Availability: {item.availability}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-primary/10 to-white/5 p-6 shadow-xl">
+              <div className="space-y-3">
+                <p className="text-sm uppercase tracking-[0.18em] text-primary">Instant SIP setup</p>
+                <h4 className="text-2xl font-semibold text-white">Numbers, SIP credentials, and call routing in one flow.</h4>
+                <p className="text-muted-foreground">
+                  Validate regions, reserve numbers, and ship credentials to your agents or automations without manual tickets.
+                </p>
+                <ul className="space-y-2 text-sm text-slate-200">
+                  <li>• Compliance hints for every region before checkout</li>
+                  <li>• Auto-generate SIP users with role-based permissions</li>
+                  <li>• Ready-to-use WebRTC endpoints for browser dialing</li>
+                  <li>• Realtime rate estimation across carriers</li>
+                </ul>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">Tier-1 carriers</span>
+                <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">Fraud controls</span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white">24/7 monitoring</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="container relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#120d24]/80 via-[#0e0a1e]/90 to-[#0b0818]/85 p-8 shadow-glow">
           <div className="absolute inset-0 opacity-30">
             <motion.div
               className="gradient-bg absolute inset-0"
@@ -250,24 +331,24 @@ export default function HomePage() {
           </div>
           <div className="relative grid gap-6 lg:grid-cols-[1.2fr,0.8fr]">
             <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.25em] text-sky-200">Request Access</p>
+              <p className="text-sm uppercase tracking-[0.25em] text-primary">Request Access</p>
               <h3 className="text-3xl font-semibold text-white">Experience DialCore with your team</h3>
               <p className="text-lg text-slate-200">
                 Tell us about your voice traffic, compliance needs, and timelines. Our onboarding engineers will tailor DialCore to your call flows.
               </p>
               <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">SIP trunks</span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">AI copilots</span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Regulatory-ready</span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Latency SLAs</span>
+                <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-primary">SIP trunks</span>
+                <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-accent">AI copilots</span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white">Regulatory-ready</span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white">Latency SLAs</span>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-6">
+            <div className="flex flex-col justify-center gap-4 rounded-2xl border border-primary/30 bg-white/5 p-6">
               <p className="text-sm text-muted-foreground">Ready to build?</p>
               <AccessDialog>
-                <Button size="lg" className="w-full shadow-glow">Talk to us</Button>
+                <Button size="lg" className="w-full shadow-glow bg-accent text-slate-900 hover:bg-accent/90">Talk to us</Button>
               </AccessDialog>
-              <Button variant="ghost" className="w-full text-sky-100 hover:text-white">
+              <Button variant="ghost" className="w-full text-white hover:text-primary">
                 Download product brief
               </Button>
             </div>

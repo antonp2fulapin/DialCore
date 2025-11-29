@@ -15,6 +15,9 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "Plus Jakarta Sans", "Inter", "system-ui", "-apple-system", "sans-serif"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -67,7 +70,7 @@ const config: Config = {
         "float-slow": "float-slow 6s ease-in-out infinite",
       },
       boxShadow: {
-        glow: "0 10px 50px rgba(53, 162, 255, 0.15)",
+        glow: "0 10px 50px rgba(130, 74, 255, 0.18)",
       },
     },
   },
